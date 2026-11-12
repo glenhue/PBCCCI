@@ -1,13 +1,93 @@
-<!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>PBCCCI</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="stylesheet" Href="Dashboard.css">
+<title>Praise Baptist Church Management System</title>
 </head>
 <body>
-    <h1>Hello World! welcome
-        BBS Nathan & Primo
-    </h1>
+<header class="topbar">
+  <div class="brand"><div class="brand-mark">PRAISE<br>BC</div><span>PRAISE BAPTIST<br>CHRISTIAN COMMUNITY</span></div>
+  <nav class="nav"><button onclick="showPage('welcome')">ABOUT</button><button onclick="showPage('welcome')">CONTACT US</button><button onclick="showPage('login')">LOG IN</button></nav>
+</header>
+
+<section id="welcome" class="page active">
+  <div class="hero"><div><h1>WELCOME TO<br>PRAISE BAPTIST CHRISTIAN COMMUNITY CHURCH INC.</h1><p>A place to worship, grow in faith, and build a stronger church community.</p><button class="primary" onclick="showPage('login')">LOG IN TO SYSTEM</button></div></div>
+  <div class="quick-links">
+    <div class="quick-card"><span>◷</span><div>WORSHIP SERVICE<br><small>Sunday • 9:00 AM</small></div></div>
+    <div class="quick-card"><span>▶</span><div>WATCH OUR LIVE<br><small>Join our online service</small></div></div>
+    <div class="quick-card"><span>▣</span><div>CHURCH EVENTS<br><small>See upcoming activities</small></div></div>
+  </div>
+</section>
+
+<section id="login" class="page">
+  <div class="login-wrap"><form class="login-box" onsubmit="event.preventDefault();showPage('dashboard')">
+    <div class="user-icon">◎</div><h2>Welcome Back</h2><p>Log in to the Church Management System</p>
+    <input type="email" placeholder="✉  Email address" required>
+    <input type="password" placeholder="▣  Enter password" required>
+    <button type="submit">ENTER</button>
+  </form></div>
+</section>
+
+<section id="dashboard" class="page">
+<div class="app">
+  <aside class="sidebar">
+    <div class="brand"><div class="brand-mark">PRAISE<br>BC</div><span>PRAISE BAPTIST</span></div>
+    <a class="side-link active" onclick="showPage('dashboard')">▦ &nbsp; DASHBOARD</a>
+    <a class="side-link" onclick="showPage('members')">♙ &nbsp; MEMBERS MANAGEMENT</a>
+    <a class="side-link" onclick="showPage('announcements')">⚑ &nbsp; CHURCH ANNOUNCEMENTS</a>
+    <a class="side-link" onclick="showPage('inventory')">▤ &nbsp; INVENTORY MANAGEMENT</a>
+    <a class="side-link" onclick="showPage('finance')">Ⓟ &nbsp; FINANCIAL MANAGEMENT</a>
+    <a class="side-link" onclick="showPage('welcome')">↪ &nbsp; LOG OUT</a>
+  </aside>
+  <main class="content">
+    <div class="welcome"><div class="brand-mark">PRAISE<br>BC</div><div><b>WELCOME TO THE CHURCH MANAGEMENT SYSTEM!</b><p style="margin:6px 0 0;font-size:12px">Quick overview of your church management tools.</p></div></div>
+    <div class="cards">
+      <div class="stat"><small>Total Members</small><strong>30</strong><p>Registered in directory</p></div>
+      <div class="stat"><small>Active Members</small><strong>25</strong><p>Currently participating</p></div>
+      <div class="stat"><small>New Visitors</small><strong>1</strong><p>Follow-up and care</p></div>
+    </div>
+    <div class="module-grid">
+      <div class="module" onclick="showPage('members')">♙ <b>MEMBERS</b><small>Directory and profile</small></div>
+      <div class="module" onclick="showPage('announcements')">▣ <b>ANNOUNCEMENTS</b><small>Church bulletin</small></div>
+      <div class="module" onclick="showPage('inventory')">▤ <b>INVENTORY</b><small>Equipment and assets</small></div>
+      <div class="module" onclick="showPage('finance')">₱ <b>FINANCIAL</b><small>Tithes and ledger</small></div>
+    </div>
+  </main>
+</div>
+</section>
+
+<section id="members" class="page"><div class="app">
+<aside class="sidebar"><a class="side-link" onclick="showPage('dashboard')">▦ DASHBOARD</a><a class="side-link active">♙ MEMBERS MANAGEMENT</a><a class="side-link" onclick="showPage('announcements')">⚑ ANNOUNCEMENTS</a><a class="side-link" onclick="showPage('inventory')">▤ INVENTORY</a><a class="side-link" onclick="showPage('finance')">₱ FINANCIAL</a><a class="side-link" onclick="showPage('welcome')">↪ LOG OUT</a></aside>
+<main class="content"><div class="toolbar"><h2>Members Information</h2><input id="memberSearch" class="search" placeholder="Search members..." oninput="filterMembers()"><button class="primary" onclick="document.getElementById('addMember').style.display='block'">+ Add New Member</button></div>
+<div class="cards"><div class="stat"><small>Total Members</small><strong>30</strong></div><div class="stat"><small>Active Members</small><strong>25</strong></div><div class="stat"><small>New Visitors</small><strong>1</strong></div></div>
+<div id="memberList" class="member-list"><div class="member"><div class="avatar">👨🏻</div><div class="member-info"><b>MEMBER 1: SAMPLE NAME</b><br>Age: 28<br>Address: Dasmariñas, Cavite<br>Birthday: January 10</div></div><div class="member"><div class="avatar">👩🏻</div><div class="member-info"><b>MEMBER 2: SAMPLE NAME</b><br>Age: 32<br>Address: Dasmariñas, Cavite<br>Birthday: March 15</div></div></div>
+<div id="addMember" class="form-card" style="display:none;margin-top:18px"><h3>Add Member</h3><label>Full name</label><input placeholder="Enter full name"><label>Address</label><input placeholder="Enter address"><button class="primary" style="margin-top:14px" onclick="alert('Sample form: connect this button to your database to save member records.')">Save Member</button></div>
+</main></div></section>
+
+<section id="announcements" class="page"><div class="app">
+<aside class="sidebar"><a class="side-link" onclick="showPage('dashboard')">▦ DASHBOARD</a><a class="side-link" onclick="showPage('members')">♙ MEMBERS</a><a class="side-link active">⚑ ANNOUNCEMENTS</a><a class="side-link" onclick="showPage('inventory')">▤ INVENTORY</a><a class="side-link" onclick="showPage('finance')">₱ FINANCIAL</a><a class="side-link" onclick="showPage('welcome')">↪ LOG OUT</a></aside>
+<main class="content"><div class="toolbar"><h2>Church Announcements</h2><button class="primary" onclick="document.getElementById('announcementForm').style.display='block'">+ Post Announcement</button></div>
+<div class="filters"><button class="filter active" onclick="filterAnnouncements('All',this)">All</button><button class="filter" onclick="filterAnnouncements('Worship Service',this)">Worship Service</button><button class="filter" onclick="filterAnnouncements('Young & Adults',this)">Young & Adults</button><button class="filter" onclick="filterAnnouncements('Outreach',this)">Outreach</button><button class="filter" onclick="filterAnnouncements('Admin',this)">Admin</button></div>
+<div id="announcementGrid" class="announcement-grid"><article class="announcement" data-category="Worship Service"><span class="tag">Worship Service</span><h3>Sunday Worship Service</h3><p>Join us this Sunday for worship, fellowship, and a time to grow together in faith.</p><small>Sunday • 9:00 AM</small></article><article class="announcement" data-category="Young & Adults"><span class="tag">Young & Adults</span><h3>Youth Fellowship</h3><p>All young people are invited to join our fellowship activity.</p><small>Saturday • 3:00 PM</small></article></div>
+<div id="announcementForm" class="form-card" style="display:none;margin-top:18px"><h3>New Announcement</h3><label>Title</label><input placeholder="Announcement title"><label>Category</label><select><option>Worship Service</option><option>Young & Adults</option><option>Outreach</option><option>Admin</option></select><label>Details</label><textarea rows="3" placeholder="Write announcement..."></textarea><button class="primary" style="margin-top:12px" onclick="alert('Sample form: connect this form to your database to publish announcements.')">Publish</button></div>
+</main></div></section>
+
+<section id="inventory" class="page"><div class="app">
+<aside class="sidebar"><a class="side-link" onclick="showPage('dashboard')">▦ DASHBOARD</a><a class="side-link" onclick="showPage('members')">♙ MEMBERS</a><a class="side-link" onclick="showPage('announcements')">⚑ ANNOUNCEMENTS</a><a class="side-link active">▤ INVENTORY</a><a class="side-link" onclick="showPage('finance')">₱ FINANCIAL</a><a class="side-link" onclick="showPage('welcome')">↪ LOG OUT</a></aside>
+<main class="content"><div class="toolbar"><h2>Inventory Management</h2><button class="primary" onclick="document.getElementById('equipmentForm').style.display='block'">+ Add Equipment</button></div>
+<div class="cards"><div class="stat"><small>Total Assets</small><strong>8</strong><p>Registered equipment</p></div><div class="stat"><small>Good Condition</small><strong>10</strong><p>Ready to use</p></div><div class="stat"><small>Need Maintenance</small><strong>2</strong><p>For checking</p></div></div>
+<table class="inventory-table"><thead><tr><th>Equipment</th><th>Quantity</th><th>Condition</th><th>Location</th></tr></thead><tbody><tr><td>Microphone</td><td>4</td><td><span class="status">Good</span></td><td>Main Hall</td></tr><tr><td>Speaker</td><td>2</td><td><span class="status warn">Needs check</span></td><td>Main Hall</td></tr><tr><td>Projector</td><td>1</td><td><span class="status">Good</span></td><td>Media Room</td></tr></tbody></table>
+<div id="equipmentForm" class="form-card" style="display:none;margin-top:18px"><h3>Add Equipment</h3><label>Equipment name</label><input placeholder="Enter equipment"><label>Quantity</label><input type="number" min="1" placeholder="Quantity"><label>Condition</label><select><option>Good</option><option>Needs maintenance</option></select><button class="primary" style="margin-top:12px" onclick="alert('Sample form: connect this form to your database to save equipment.')">Save Equipment</button></div>
+</main></div></section>
+
+<section id="finance" class="page"><div class="app">
+<aside class="sidebar"><a class="side-link" onclick="showPage('dashboard')">▦ DASHBOARD</a><a class="side-link" onclick="showPage('members')">♙ MEMBERS</a><a class="side-link" onclick="showPage('announcements')">⚑ ANNOUNCEMENTS</a><a class="side-link" onclick="showPage('inventory')">▤ INVENTORY</a><a class="side-link active">₱ FINANCIAL</a><a class="side-link" onclick="showPage('welcome')">↪ LOG OUT</a></aside>
+<main class="content"><h2>Financial Management</h2><p>Sample financial overview. Add your approved church records and access controls before using real financial information.</p><div class="cards"><div class="stat"><small>Monthly Tithes</small><strong>₱0.00</strong><p>Sample display</p></div><div class="stat"><small>Offerings</small><strong>₱0.00</strong><p>Sample display</p></div><div class="stat"><small>Expenses</small><strong>₱0.00</strong><p>Sample display</p></div></div></main></div></section>
+<script>
+function showPage(id){document.querySelectorAll('.page').forEach(p=>p.classList.remove('active'));const page=document.getElementById(id);if(page)page.classList.add('active');window.scrollTo(0,0)}
+function filterMembers(){const q=document.getElementById('memberSearch').value.toLowerCase();document.querySelectorAll('#memberList .member').forEach(m=>m.style.display=m.innerText.toLowerCase().includes(q)?'flex':'none')}
+function filterAnnouncements(category,button){document.querySelectorAll('.filter').forEach(b=>b.classList.remove('active'));button.classList.add('active');document.querySelectorAll('#announcementGrid .announcement').forEach(a=>a.style.display=category==='All'||a.dataset.category===category?'block':'none')}
+</script>
 </body>
 </html>
